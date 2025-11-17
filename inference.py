@@ -60,7 +60,7 @@ class TextGenerator:
         return [self.char_to_idx[ch] for ch in text]
     def decode(self, indices):
         """Decodifica índices em texto"""
-        return ''.join([self.idx_to_char.get(idx, '') for idx in indices])
+        return ''.join([self.idx_to_char.get(idx, '?') for idx in indices])
 
     def generate(
         self,
