@@ -84,7 +84,7 @@ class TextDataLoader:
         Returns:
             Texto decodificado
         """
-        return ''.join([self.idx_to_char[idx] for idx in indices])
+        return ''.join([self.idx_to_char.get(idx, '?') for idx in indices])
 
     def create_sequences(self, seq_length: int = 100, stride: int = 1) -> Tuple[np.ndarray, np.ndarray]:
         """
