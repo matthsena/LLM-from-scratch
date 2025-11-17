@@ -57,7 +57,7 @@ class MultiHeadAttention(nn.Module):
 
         attn_output = self.scaled_dot_product_attention(Q, K, V, mask)
         output = self.W_o(self.combine_heads(attn_output))
-
+        output = self.dropout(output)
         return output
 
 
