@@ -51,8 +51,13 @@ class TextGenerator:
 
     def encode(self, text: str):
         """Codifica texto em índices"""
-        return [self.char_to_idx.get(ch, 0) for ch in text]
-
+        unknown_chars = [ch for ch in text if ch not in self.char_to_idx]
+        if unknown_chars:
+            raise ValueError(
+                f"Caracteres desconhecidos no prompt: {unknown_chars}. "
+                "Por favor, use apenas caracteres presentes no vocabulário."
+            )
+        return [self.char_to_idx[ch] for ch in text]
     def decode(self, indices):
         """Decodifica índices em texto"""
         return ''.join([self.idx_to_char.get(idx, '') for idx in indices])
