@@ -8,7 +8,6 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 import argparse
-from datetime import datetime
 import json
 
 from src.data_loader import TextDataLoader
