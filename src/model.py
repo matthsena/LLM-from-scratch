@@ -204,7 +204,7 @@ class SmallLanguageModel(nn.Module):
         with torch.no_grad():
             for _ in range(max_new_tokens):
                 # Limita o contexto ao tamanho máximo
-                idx_cond = idx if idx.size(1) <= 100 else idx[:, -100:]
+                idx_cond = idx if idx.size(1) <= self.max_seq_length else idx[:, -self.max_seq_length:]
 
                 # Forward pass
                 logits = self(idx_cond)
